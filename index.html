@@ -13,18 +13,48 @@
     </header>
     <main class="main-content">
       <form class="form-parameters">
-        <label>
-          <input type="radio" name="sex" value="male" />male
-          <div class="radio-control male"></div>
-        </label>
-        <label>
-          <input type="radio" name="sex" value="female" />female
-          <div class="radio-control female"></div>
-        </label>
-        <label>
-          <input type="radio" name="sex" value="all" />all
-          <div class="radio-control all"></div>
-        </label>
+        <input type="text" placeholder="looking for..." />
+        <button id="button">X</button>
+        <fieldset>
+          <legend>filter by gender</legend>
+          <label>
+            <input type="radio" name="sex" value="male" />male
+            <div class="radio-control male"></div>
+          </label>
+          <label>
+            <input type="radio" name="sex" value="female" />female
+            <div class="radio-control female"></div>
+          </label>
+          <label>
+            <input type="radio" name="sex" value="all" checked />all
+            <div class="radio-control all"></div>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>sort </legend>
+          <label>
+            <input type="radio" name="name" value="name up" />name up
+            <div class="radio-control male"></div>
+          </label>
+          <label>
+            <input type="radio" name="name" value="name down" />name down
+            <div class="radio-control female"></div>
+          </label>
+
+          <label>
+            <input type="radio" name="name" value="age up" />age up
+            <div class="radio-control male"></div>
+          </label>
+          <label>
+            <input type="radio" name="name" value="age down" />age down
+            <div class="radio-control female"></div>
+          </label>
+          <label>
+            <input type="radio" name="name" value="unsorted" checked />unsorted
+            <div class="radio-control female"></div>
+          </label>
+        </fieldset>
       </form>
       <section class="content">
         <div class="friend-wrap">
