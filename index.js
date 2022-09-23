@@ -45,10 +45,34 @@ getResource(url).then((data) => {
 
   renderCard(friendsList);
 
+  let input = document.querySelector(".input");
+  let clearButton=document.querySelector("#clear");
+  let currentFrendsList;
+
+  clearButton.addEventListener("click", (event)=>{
+    event.preventDefault();
+    input.value="";
+  });
+
+  input.addEventListener("input",(event)=>{
+    let searchFriends;
+    searchFriends = currentFrendsList.filter((element) => {
+        let strName=`${element.name.first}${element.name.last}`.toLowerCase();
+        console.log(strName,input.value);
+        return strName.indexOf(input.value)>=0;
+      });
+    renderCard(searchFriends);
+  });
+
+
+
+
   formParameters.addEventListener("click", (event) => {
     let sex = document.querySelector('[name="sex"]:checked').value;
     let name = document.querySelector('[name="name"]:checked').value;
-    let currentFrendsList;
+    
+
+    
 
     if (sex === "all") {
       currentFrendsList = friendsList;
