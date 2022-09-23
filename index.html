@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Friends app</title>
+    <link href="./style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <h1>Frends APP</h1>
+    </header>
+    <main class="main-content">
+      <form class="form-parameters">
+        <label>
+          <input type="radio" name="sex" value="male" />male
+          <div class="radio-control male"></div>
+        </label>
+        <label>
+          <input type="radio" name="sex" value="female" />female
+          <div class="radio-control female"></div>
+        </label>
+        <label>
+          <input type="radio" name="sex" value="all" />all
+          <div class="radio-control all"></div>
+        </label>
+      </form>
+      <section class="content">
+        <div class="friend-wrap">
+          <header class="friend-header">
+            <h3>Peter Andersen</h3>
+          </header>
+          <img
+            class="friend-img"
+            src="https://randomuser.me/api/portraits/men/39.jpg"
+            alt=""
+          />
+
+          <p>I have <span>29</span> years old</p>
+          <a href="#" class="friend-email">example@gmail.com</a>
+          <a href="#" class="friend-tel">(163)5896-96-32</a>
+          <footer class="friend-gender">
+            <h4>Male</h4>
+          </footer>
+        </div>
+      </section>
+    </main>
+    <footer class="main-footer"></footer>
+    <script src="./index.js"></script>
+  </body>
+</html>
