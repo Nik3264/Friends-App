@@ -1,4 +1,4 @@
-body * {
+body {
     margin: 0 auto;
     box-sizing: border-box;
     /*background-color: var(--sand);*/
@@ -17,12 +17,15 @@ body * {
 :root {
     --green:rgba(51,131,09,0.75);/* #338309;*/
     --light-green: rgba(201,212,108,0.5);
-    --carrot: rgba(228,135,22,0.8);
+    --carrot: rgba(228,135,22,1);
     --light-carrot: rgba(250,171,1,0.8);
     --sand: rgba(223,188,178,0.8);
   }
 
 .main-header {
+    z-index: 100;
+    position:sticky;
+    top:0px;
     width: 100%;
     height: min(100px, 15vh);
     background-color:var(--carrot);
@@ -45,18 +48,32 @@ body * {
     flex-wrap: wrap;
 }
 
+.form-wrap {
+    position: sticky;
+    top:min(100px, 15vh);
+}
+
 .form-parameters {
     margin: 0;
     position: relative;
     width: 20%;
-    align-self: stretch;
+    align-self:sticky;
     color:var(--green);
     background-color:var(--carrot);
+    /*background-image: url("./img/palitra.png");
+    background-repeat:space;*/
+    background-image: url('./img/palitra_600.png');
+    background-size:auto 100%;
+    background-position:left top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .form-parameters fieldset {
+    display: flex;
+    flex-direction: column;
     border:none;/*2px solid var(--light-carrot);*/
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255,255,255,0.75);
     border-radius:2%;
     margin: 2px 2px 10px;
 }
@@ -64,17 +81,20 @@ body * {
 label input {
     color:var(--carrot);
     margin: 0px 2px 10px;
+    display: inline-block;
+}
+
+label {
+    margin: 5px 0;
 }
 
 .input {
-    
+    box-sizing:border-box;
     width: calc(100% - 4px);
-    color:white;
-    /*border:2px solid var(--light-carrot);*/
-
+    color:var(--green);
     padding: 10px 15px;
     border-width: 0;
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255,255,255,0.75);
     outline: none;
     margin: 0px 2px 10px;
 }
@@ -99,6 +119,7 @@ label input {
     align-items: flex-start;
     align-content: space-evenly;
     background-color:var(--light-green);
+
 }
 
 .friend-wrap {
@@ -108,7 +129,7 @@ label input {
     width: 200px;
     height: 300px;
     overflow: hidden;
-    border:2px solid var(--light-carrot);
+    /*border:2px solid var(--light-green);*/
     border-radius:5%;
     box-shadow: 3px 7px 7px rgba(0,0,0,0.5);
     background-color:rgba(255,255,255,0.75);
@@ -131,13 +152,21 @@ label input {
 
 .friend-header h3 {
     padding: 5px;
-    font-size: 1.3em;
+    font-size: 1.1em;
 }
 
 .friend-img {
     border-radius: 50%;
     padding: 5px;
-    box-shadow:inset 1px 1px 1px 1px rgba(0,0,0,0.5);
+    box-shadow:inset 1px 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.male {
+    border:2px solid var(--green);
+}
+
+.female {
+    border:2px solid var(--carrot);
 }
 
 .friend-wrap p {

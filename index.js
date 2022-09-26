@@ -29,7 +29,7 @@ getResource(url).then((data) => {
                     <header class="friend-header">
                         <h3>${friend.name.first} ${friend.name.last}</h3>
                     </header>
-                    <img class="friend-img" src="${friend.picture.large}" alt="">
+                    <img class="friend-img ${friend.gender}" src="${friend.picture.large}" alt="">
 
                     <p>I have <span>${friend.dob.age}</span> years old</p>
                     <a href="#" class="friend-email">${friend.email}</a>
@@ -69,7 +69,6 @@ getResource(url).then((data) => {
 
 
 
-
   formParameters.addEventListener("click", (event) => {
     let sex = document.querySelector('[name="sex"]:checked').value;
     let name = document.querySelector('[name="name"]:checked').value;
@@ -97,6 +96,7 @@ console.log(currentFrendsList);
         sortAgeDown();
         break;
     case "unsorted":
+        //currentFrendsList=friendsList;
         break;
     }
 
