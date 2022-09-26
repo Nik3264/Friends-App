@@ -96,17 +96,19 @@ body {
 
 }
 .radio-control:checked:before {
-
-    content:"\2713";
-    color: white;
+    content:"\1F34A";/*2713*/
+    color: var(--carrot);
     position: relative;
     padding: initial;
-    top:-10px;
-    left: -2px;
-    font-size: 22px;
+    top:-5px;
+    left: -5px;
+    font-size: 18px;
 }
 
-
+.radio-control:checked:before ~ .radio-control-label{
+    top:-5px;
+    left: -5px;
+}
 
 
 .input {
