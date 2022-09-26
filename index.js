@@ -48,20 +48,23 @@ getResource(url).then((data) => {
   let input = document.querySelector(".input");
   let clearButton=document.querySelector("#clear");
   let currentFrendsList;
+  let searchFriends=[];
 
   clearButton.addEventListener("click", (event)=>{
     event.preventDefault();
     input.value="";
+    searchFriends=[];
+
   });
 
   input.addEventListener("input",(event)=>{
-    let searchFriends;
     searchFriends = currentFrendsList.filter((element) => {
         let strName=`${element.name.first}${element.name.last}`.toLowerCase();
         console.log(strName,input.value);
         return strName.indexOf(input.value)>=0;
       });
     renderCard(searchFriends);
+    //currentFrendsList=searchFriends;
   });
 
 
@@ -70,14 +73,12 @@ getResource(url).then((data) => {
   formParameters.addEventListener("click", (event) => {
     let sex = document.querySelector('[name="sex"]:checked').value;
     let name = document.querySelector('[name="name"]:checked').value;
-    
-
-    
+    let filterFriendsList=searchFriends.length==0 ? friendsList:searchFriends;
 
     if (sex === "all") {
-      currentFrendsList = friendsList;
+      currentFrendsList = filterFriendsList;
     } else {
-      currentFrendsList = friendsList.filter((element) => {
+      currentFrendsList = filterFriendsList.filter((element) => {
         return element.gender === sex;
       });
     }

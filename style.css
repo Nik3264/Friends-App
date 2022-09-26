@@ -1,4 +1,4 @@
-body {
+body * {
     margin: 0 auto;
     box-sizing: border-box;
     /*background-color: var(--sand);*/
@@ -15,11 +15,11 @@ body {
 
 /*4561*/
 :root {
-    --green: #338309;
-    --light-green: #c9d46c;
-    --carrot: #e48716;
-    --light-carrot: #faab01;
-    --sand: #dfbcb2;
+    --green:rgba(51,131,09,0.75);/* #338309;*/
+    --light-green: rgba(201,212,108,0.5);
+    --carrot: rgba(228,135,22,0.8);
+    --light-carrot: rgba(250,171,1,0.8);
+    --sand: rgba(223,188,178,0.8);
   }
 
 .main-header {
@@ -28,8 +28,9 @@ body {
     background-color:var(--carrot);
 }
 
-h1 {
+.main-header h1 {
     margin: 0;    
+    padding-top: 2vh;
     color: white;
     font-size: 3em;
     text-align: center;
@@ -38,30 +39,70 @@ h1 {
 
 .main-content {
     display: flex;
+    justify-content: space-between;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
 }
 
 .form-parameters {
-    margin: 10px;
-    width: 25%;
-    height: 300px;
-    border:1px solid var(--sand);
+    margin: 0;
+    position: relative;
+    width: 20%;
+    align-self: stretch;
+    color:var(--green);
+    background-color:var(--carrot);
+}
+
+.form-parameters fieldset {
+    border:none;/*2px solid var(--light-carrot);*/
+    background-color: rgba(255,255,255,0.5);
+    border-radius:2%;
+    margin: 2px 2px 10px;
+}
+
+label input {
+    color:var(--carrot);
+    margin: 0px 2px 10px;
+}
+
+.input {
+    
+    width: calc(100% - 4px);
+    color:white;
+    /*border:2px solid var(--light-carrot);*/
+
+    padding: 10px 15px;
+    border-width: 0;
+    background-color: rgba(255,255,255,0.5);
+    outline: none;
+    margin: 0px 2px 10px;
+}
+
+#clear {
+    position: absolute;
+    top:0px;
+    right:0px;
+    width: 25px;
+    height: 25px;
+    color:var(--green);
+    border-radius:50%;
+    border:3px solid var(--green);
 }
 
 .content {
-    margin: 0 auto;
+    margin: 0;
+    width: 80%;
     display: flex;
     flex-wrap: wrap;
-    width: 70%;
-    justify-content: flex-start;
+    justify-content:space-evenly;
     align-items: flex-start;
-    align-content: space-around;
+    align-content: space-evenly;
+    background-color:var(--light-green);
 }
 
 .friend-wrap {
-    margin: 10px;
+    margin: 2%;
     display: flex;
     flex-direction: column;
     width: 200px;
@@ -70,7 +111,7 @@ h1 {
     border:2px solid var(--light-carrot);
     border-radius:5%;
     box-shadow: 3px 7px 7px rgba(0,0,0,0.5);
-    
+    background-color:rgba(255,255,255,0.75);
     align-content: flex-start;
     align-items: center;
     justify-content: space-between;
@@ -99,15 +140,32 @@ h1 {
     box-shadow:inset 1px 1px 1px 1px rgba(0,0,0,0.5);
 }
 
+.friend-wrap p {
+    font-size: 18px;
+}
+
 .friend-wrap p, .friend-wrap a {
     color:var(--carrot);
     font-weight: 700;
 }
 .friend-wrap a:hover {
-    color:var(--light-green);
+    color:var(--green);
 }
 
 .friend-gender h4 {
-    padding: 5px;
+    padding: 8px;
     text-transform: uppercase;
+}
+
+.friend-email {
+    font-size: 13px;
+}
+
+@media screen  and (max-width:559px) {
+    .form-parameters {
+        width: 30%;
+    }
+    .content {
+        width: 70%;
+    }
 }
