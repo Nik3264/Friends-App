@@ -81,6 +81,11 @@ body {
     font-size: 18px;
 }
 
+.radio-control-label span {
+    font-weight: 700;
+    font-size: 1.2em;
+}
+
 .radio-control {
     appearance: none;
     -webkit-appearance: none;
