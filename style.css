@@ -18,7 +18,7 @@ body {
     position:sticky;
     top:0px;
     width: 100%;
-    height: min(80px, 7vh);
+    height: min(80px, 7vmax);
     background-color:var(--carrot);
 }
 
