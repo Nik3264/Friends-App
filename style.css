@@ -1,6 +1,8 @@
 body {
     margin: 0 auto;
     box-sizing: border-box;
+    overflow-y: scroll;
+    
 }
 
 :root {
@@ -69,6 +71,7 @@ body {
 .form-parameters fieldset label {
     height: 30px;
     font-size: 18px;
+    font-family: 'Bungee Spice', cursive;
 }
 
 .radio-control-label {
@@ -89,14 +92,14 @@ body {
     margin: 4px 13px 13px 5px;
     padding: 5px;
     background-color: var(--light-carrot);
-    border-radius:20%;
+    border-radius:50%;
 }
 .radio-control:checked {
     background-color: green;
 
 }
 .radio-control:checked:before {
-    content:"\1F34A";/*2713*/
+    content:"\1F34A";
     color: var(--carrot);
     position: relative;
     padding: initial;
@@ -116,6 +119,7 @@ body {
     width: calc(100% - 4px);
     color:var(--green);
     font-size: 24px;
+    
     padding: 5px;
     border:none;
     border-radius:2%;
@@ -130,11 +134,11 @@ body {
     margin: 0;
     border:none;
     top:4px;
-    right:0px;
+    right:4px;
     width: 25px;
     height: 25px;
     font-size: 30px;
-    line-height: 28px;
+    line-height: 26px;
     color:var(--green);
 }
 
@@ -226,11 +230,27 @@ body {
     font-size: 13px;
 }
 
+@media screen  and (max-width:800px) {
+    .radio-control-label {
+        font-size: 13px;
+    }
+}
+
+@media screen  and (max-width:675px) {
+
+    .radio-control-label {
+        font-size: 11px;
+    }
+}
+
 @media screen  and (max-width:559px) {
     .form-parameters {
         width: 30%;
     }
     .content {
         width: 70%;
+    }
+    .radio-control-label {
+        font-size: 10px;
     }
 }
