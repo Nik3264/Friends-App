@@ -35,28 +35,42 @@ getResource(url).then((data) => {
     formParameters = document.querySelector(".form-parameters"),
     input = document.querySelector(".input"),
     clearButton = document.querySelector("#clear");
-
+  resetButton = document.querySelector(".reset");
   let currentFrendsList;
   let searchFriends = [];
 
   renderCard(friendsList);
 
+  window.addEventListener("resize", (e) => {
+    let koeff = window.innerWidth / window.innerHeight;
+    if (koeff > 2.71) {
+      formParameters.classList.remove("back-img600");
+      formParameters.classList.add("back-img");
+    } else {
+      formParameters.classList.remove("back-img");
+      formParameters.classList.add("back-img600");
+    }
+  });
+
+  resetButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    const inputs = document.querySelectorAll(".radio-control");
+    inputs.forEach((element) => {
+      if ((element.value != "all") && (element.value != "unsorted")) {
+        element.checked = false;
+      } else {
+        element.checked=true;
+      }
+    });
+    input.value = "";
+    searchFriends = [];
+    renderCard(friendsList);
+  });
+
   clearButton.addEventListener("click", (event) => {
     event.preventDefault();
     input.value = "";
     searchFriends = [];
-  });
-
-  window.addEventListener('resize', (e) => {
-    let koeff=window.innerWidth/window.innerHeight;
-    console.log(koeff);
-    if (koeff > 2.71){
-      formParameters.classList.remove("back-img600");
-      formParameters.classList.add("back-img");
-    }else {
-      formParameters.classList.remove("back-img");
-      formParameters.classList.add("back-img600");
-    }
   });
 
   input.addEventListener("input", (event) => {
@@ -65,40 +79,46 @@ getResource(url).then((data) => {
       return strName.indexOf(input.value.toLowerCase()) >= 0;
     });
     renderCard(searchFriends);
-    //currentFrendsList=searchFriends;
   });
 
   formParameters.addEventListener("click", (event) => {
-    let sex = document.querySelector('[name="sex"]:checked').value;
-    let sortNameAge = document.querySelector('[name="name"]:checked').value;
     let filterFriendsList =
       searchFriends.length == 0 ? friendsList : searchFriends;
-    if (sex === "all") {
-      currentFrendsList = filterFriendsList;
-    } else {
-      currentFrendsList = filterFriendsList.filter((element) => {
-        return element.gender === sex;
-      });
-    }
-    switch (sortNameAge) {
-      case "name up":
-        sortNameUp();
-        break;
-      case "name down":
-        sortNameDown();
-        break;
-      case "age up":
-        sortAgeUp();
-        break;
-      case "age down":
-        sortAgeDown();
-        break;
-      case "unsorted":
-        break;
+
+    function filterByGender(listCard) {
+      let sex = document.querySelector('[name="sex"]:checked').value;
+      if (sex === "all") {
+        currentFrendsList = listCard;
+      } else {
+        currentFrendsList = listCard.filter((element) => {
+          return element.gender === sex;
+        });
+      }
     }
 
-    function sortNameUp() {
-      currentFrendsList.sort(function (a, b) {
+    function sortByNameAge(listCard) {
+      let sortNameAge = document.querySelector('[name="name"]:checked').value;
+
+      switch (sortNameAge) {
+        case "name up":
+          sortNameUp(listCard);
+          break;
+        case "name down":
+          sortNameDown(listCard);
+          break;
+        case "age up":
+          sortAgeUp(listCard);
+          break;
+        case "age down":
+          sortAgeDown(listCard);
+          break;
+        case "unsorted":
+          break;
+      }
+    }
+
+    function sortNameUp(listCard) {
+      listCard.sort(function (a, b) {
         if (a.name.first > b.name.first) {
           return 1;
         }
@@ -109,8 +129,9 @@ getResource(url).then((data) => {
         return 0;
       });
     }
-    function sortNameDown() {
-      currentFrendsList.sort(function (a, b) {
+
+    function sortNameDown(listCard) {
+      listCard.sort(function (a, b) {
         if (a.name.first < b.name.first) {
           return 1;
         }
@@ -121,8 +142,9 @@ getResource(url).then((data) => {
         return 0;
       });
     }
-    function sortAgeUp() {
-      currentFrendsList.sort(function (a, b) {
+
+    function sortAgeUp(listCard) {
+      listCard.sort(function (a, b) {
         if (a.dob.age > b.dob.age) {
           return 1;
         }
@@ -133,8 +155,9 @@ getResource(url).then((data) => {
         return 0;
       });
     }
-    function sortAgeDown() {
-      currentFrendsList.sort(function (a, b) {
+
+    function sortAgeDown(listCard) {
+      listCard.sort(function (a, b) {
         if (a.dob.age < b.dob.age) {
           return 1;
         }
@@ -146,6 +169,8 @@ getResource(url).then((data) => {
       });
     }
 
+    filterByGender(filterFriendsList);
+    sortByNameAge(currentFrendsList);
     renderCard(currentFrendsList);
   });
 });

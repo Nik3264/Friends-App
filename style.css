@@ -50,7 +50,7 @@ body {
   align-self: sticky;
   color: var(--green);
   background-color: var(--carrot);
-  
+
   background-size: auto 100%;
   background-position: left top;
   background-repeat: no-repeat;
@@ -58,11 +58,11 @@ body {
 }
 
 .back-img {
-    background-image: url("./img/palitra.png");
+  background-image: url("./img/palitra.png");
 }
 
 .back-img600 {
-    background-image: url("./img/palitra_600.png");
+  background-image: url("./img/palitra_600.png");
 }
 
 .form-parameters fieldset {
@@ -160,6 +160,16 @@ body {
   color: var(--light-carrot);
 }
 
+.reset {
+  width: 50%;
+  background-color: var(--green);
+  margin: 0 25%;
+  font-family: "Bungee Spice", cursive;
+  font-size: 18px;
+  height: 50px;
+  border-radius: 5px;
+}
+
 .content {
   margin: 0;
   width: 80%;
@@ -244,6 +254,10 @@ body {
 @media screen and (max-width: 800px) {
   .radio-control-label {
     font-size: 13px;
+  }
+  .reset {
+    width: 80%;
+    margin: 0 10%;
   }
 }
 
