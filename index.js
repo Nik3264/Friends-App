@@ -30,22 +30,11 @@ function renderCard(listCard) {
   });
 }
 
-function copyFriendsList(listCard){
-  let copyListCard=listCard.filter(()=> true);
+function copyFriendsList(listCard) {
+  let copyListCard = listCard.filter(() => true);
   return copyListCard;
 }
-/*
-function sortUp(a, b) {
-  if (a > b) {
-    return 1;
-  }
-  if (a < b) {
-    return -1;
-  }
-  // a должно быть равным b
-  return 0;
-}
-*/
+
 getResource(url).then((data) => {
   const friendsList = data.results,
     formParameters = document.querySelector(".form-parameters"),
@@ -57,7 +46,7 @@ getResource(url).then((data) => {
 
   renderCard(friendsList);
 
-  currentFrendsList=copyFriendsList(friendsList);
+  currentFrendsList = copyFriendsList(friendsList);
 
   window.addEventListener("resize", (e) => {
     let koeff = window.innerWidth / window.innerHeight;
@@ -105,7 +94,7 @@ getResource(url).then((data) => {
 
   formParameters.addEventListener("click", (event) => {
     let filterFriendsList =
-      input.value.length == 0 ? copyFriendsList(friendsList)  : searchFriends;
+      input.value.length == 0 ? copyFriendsList(friendsList) : searchFriends;
 
     function filterByGender(listCard) {
       let sex = document.querySelector('[name="sex"]:checked').value;
