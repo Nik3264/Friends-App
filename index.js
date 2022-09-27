@@ -34,9 +34,9 @@ getResource(url).then((data) => {
   const friendsList = data.results,
     formParameters = document.querySelector(".form-parameters"),
     input = document.querySelector(".input"),
-    clearButton = document.querySelector("#clear");
-  resetButton = document.querySelector(".reset");
-  let currentFrendsList;
+    clearButton = document.querySelector("#clear"),
+    resetButton = document.querySelector(".reset");
+  let currentFrendsList = [];
   let searchFriends = [];
 
   renderCard(friendsList);
@@ -56,10 +56,10 @@ getResource(url).then((data) => {
     event.preventDefault();
     const inputs = document.querySelectorAll(".radio-control");
     inputs.forEach((element) => {
-      if ((element.value != "all") && (element.value != "unsorted")) {
+      if (element.value != "all" && element.value != "unsorted") {
         element.checked = false;
       } else {
-        element.checked=true;
+        element.checked = true;
       }
     });
     input.value = "";
@@ -81,9 +81,13 @@ getResource(url).then((data) => {
     renderCard(searchFriends);
   });
 
+  input.addEventListener("click", (event) => {
+    event.stopPropagation();
+  });
+
   formParameters.addEventListener("click", (event) => {
     let filterFriendsList =
-      searchFriends.length == 0 ? friendsList : searchFriends;
+      input.value.length == 0 ? friendsList : searchFriends;
 
     function filterByGender(listCard) {
       let sex = document.querySelector('[name="sex"]:checked').value;
