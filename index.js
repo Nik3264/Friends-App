@@ -41,16 +41,12 @@ getResource(url).then((data) => {
     input = document.querySelector(".input"),
     clearButton = document.querySelector("#clear"),
     resetButton = document.querySelector(".reset");
-  let currentFrendsList;
+  let currentFrendsList=copyFriendsList(friendsList);
   let searchFriends = [];
 
-  renderCard(friendsList);
-
-  currentFrendsList = copyFriendsList(friendsList);
-
   window.addEventListener("resize", (e) => {
-    let koeff = window.innerWidth / window.innerHeight;
-    if (koeff > 2.71) {
+    let widthToHeightRatio = window.innerWidth / window.innerHeight;
+    if (widthToHeightRatio > 2.71) {
       formParameters.classList.remove("back-img600");
       formParameters.classList.add("back-img");
     } else {
@@ -184,4 +180,5 @@ getResource(url).then((data) => {
     sortByNameAge(currentFrendsList);
     renderCard(currentFrendsList);
   });
+  renderCard(friendsList);
 });
