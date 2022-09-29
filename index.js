@@ -35,13 +35,86 @@ function copyFriendsList(listCard) {
   return copyListCard;
 }
 
+function sortByNameAge(listCard) {
+  let sortNameAge = document.querySelector('[name="name"]:checked').value;
+
+  switch (sortNameAge) {
+    case "name up":
+      sortNameUp(listCard);
+      break;
+    case "name down":
+      sortNameDown(listCard);
+      break;
+    case "age up":
+      sortAgeUp(listCard);
+      break;
+    case "age down":
+      sortAgeDown(listCard);
+      break;
+    case "unsorted":
+      break;
+  }
+}
+
+function sortNameUp(listCard) {
+  listCard.sort(function (a, b) {
+    if (a.name.first > b.name.first) {
+      return 1;
+    }
+    if (a.name.first < b.name.first) {
+      return -1;
+    }
+    // a должно быть равным b
+    return 0;
+  });
+}
+
+function sortNameDown(listCard) {
+  listCard.sort(function (a, b) {
+    if (a.name.first < b.name.first) {
+      return 1;
+    }
+    if (a.name.first > b.name.first) {
+      return -1;
+    }
+    // a должно быть равным b
+    return 0;
+  });
+}
+
+function sortAgeUp(listCard) {
+  listCard.sort(function (a, b) {
+    if (a.dob.age > b.dob.age) {
+      return 1;
+    }
+    if (a.dob.age < b.dob.age) {
+      return -1;
+    }
+    // a должно быть равным b
+    return 0;
+  });
+}
+
+function sortAgeDown(listCard) {
+  listCard.sort(function (a, b) {
+    if (a.dob.age < b.dob.age) {
+      return 1;
+    }
+    if (a.dob.age > b.dob.age) {
+      return -1;
+    }
+    // a должно быть равным b
+    return 0;
+  });
+}
+
 getResource(url).then((data) => {
   const friendsList = data.results,
     formParameters = document.querySelector(".form-parameters"),
     input = document.querySelector(".input"),
     clearButton = document.querySelector("#clear"),
     resetButton = document.querySelector(".reset");
-  let currentFrendsList=copyFriendsList(friendsList);
+  let currentFrendsList = copyFriendsList(friendsList);
   let searchFriends = [];
 
   window.addEventListener("resize", (e) => {
@@ -101,79 +174,6 @@ getResource(url).then((data) => {
           return element.gender === sex;
         });
       }
-    }
-
-    function sortByNameAge(listCard) {
-      let sortNameAge = document.querySelector('[name="name"]:checked').value;
-
-      switch (sortNameAge) {
-        case "name up":
-          sortNameUp(listCard);
-          break;
-        case "name down":
-          sortNameDown(listCard);
-          break;
-        case "age up":
-          sortAgeUp(listCard);
-          break;
-        case "age down":
-          sortAgeDown(listCard);
-          break;
-        case "unsorted":
-          break;
-      }
-    }
-
-    function sortNameUp(listCard) {
-      listCard.sort(function (a, b) {
-        if (a.name.first > b.name.first) {
-          return 1;
-        }
-        if (a.name.first < b.name.first) {
-          return -1;
-        }
-        // a должно быть равным b
-        return 0;
-      });
-    }
-
-    function sortNameDown(listCard) {
-      listCard.sort(function (a, b) {
-        if (a.name.first < b.name.first) {
-          return 1;
-        }
-        if (a.name.first > b.name.first) {
-          return -1;
-        }
-        // a должно быть равным b
-        return 0;
-      });
-    }
-
-    function sortAgeUp(listCard) {
-      listCard.sort(function (a, b) {
-        if (a.dob.age > b.dob.age) {
-          return 1;
-        }
-        if (a.dob.age < b.dob.age) {
-          return -1;
-        }
-        // a должно быть равным b
-        return 0;
-      });
-    }
-
-    function sortAgeDown(listCard) {
-      listCard.sort(function (a, b) {
-        if (a.dob.age < b.dob.age) {
-          return 1;
-        }
-        if (a.dob.age > b.dob.age) {
-          return -1;
-        }
-        // a должно быть равным b
-        return 0;
-      });
     }
 
     filterByGender(filterFriendsList);
